@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flaskhost-test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flaskhost-test
+  template:
+    metadata:
+      labels:
+        app: flaskhost-test
+    spec:
+      containers:
+      - name: flaskhost-app
+        image: gcr.io/terraform-test-336308/flaskhost:latest
+        ports:
+        - containerPort: 5000
